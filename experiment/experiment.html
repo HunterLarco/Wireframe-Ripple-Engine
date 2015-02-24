@@ -4,558 +4,415 @@
 <head>
 <style type="text/css">
 
-body
-{
+body{
 	margin:0px;
 	padding:0px;
+	
 	overflow:hidden;
+	
 	background:rgb(255,255,255);
+	
 	-moz-user-select: none; 
 	-khtml-user-select: none; 
 	-webkit-user-select: none; 
 	-o-user-select: none;
+	
+	font-family:arial;
+	font-size:16px;
 }
 
-div.canvasFrame
-{
-	position:absolute;
+.canvas{
+	position:fixed;
 	top:0px;
 	left:0px;
 	right:0px;
-	bottom:33px;
+	bottom:64px;
 }
-
-div.canvasFrame canvas
-{
-	position:absolute;
-	bottom:0px;
-	left:0px;
-	z-index:1;
-}
-
-#menuFrame
-{
-	position:absolute;
-	bottom:0px;
-	left:0px;
+.canvas canvas{
 	width:100%;
-	height:33px;
-	background:url('./images/menuBackground.png') repeat-x;
-	-moz-user-select: none; 
-	-khtml-user-select: none; 
-	-webkit-user-select: none; 
-	-o-user-select: none;
-	color:rgb(255,255,255);
-}
-
-#sliderBarFrame
-{
-	margin:9px 10px;
-	height:9px;
-	width:200px;
-	background:rgb(201,204,207);
-	-moz-border-radius:7px;
-	border-radius:7px;
-	-moz-box-shadow: inset 1px 1px 1px rgba(0,0,0,0.5);
-	-webkit-box-shadow: inset 1px 1px 1px rgba(0,0,0,0.5);
-	box-shadow: inner 1px 1px 1px rgba(0,0,0,0.5);
-	padding:3px;
-	position:relative;
-}
-
-#sliderBarFrame #sliderBar
-{
-	padding-top:1px;
 	height:100%;
-	width:50%;
-	-moz-border-radius:5px;
-	border-radius:5px;
-	background:rgb(125,135,145);
-	-moz-box-shadow: inset 1px 1px 2px rgba(0,0,0,0.75);
-	-webkit-box-shadow: inset 1px 1px 2px rgba(0,0,0,0.75);
-	box-shadow: inner 1px 1px 2px rgba(0,0,0,0.75);
+	
+	display:block;
+	
+	cursor: move;
 }
 
-#sliderBarFrame #sliderButton
-{
-	background:url('./images/sliderButton.png') no-repeat;
-	width:20px;
-	height:20px;
-	position:absolute;
-	top:-2px;
-	left:95px;
-	-moz-border-radius:10px;
-	border-radius:10px;
-	-moz-box-shadow: inset 0px 0px 5px rgba(0,0,0,0.75);
-	-webkit-box-shadow: inset 0px 0px 5px rgba(0,0,0,0.75);
-	box-shadow: inner 0px 0px 5px rgba(0,0,0,0.75);
-}
-
-#sliderBarFrame #sliderButton:active
-{
-	-moz-box-shadow: inset 0px 0px 10px rgb(0,0,0);
-	-webkit-box-shadow: inset 0px 0px 10px rgb(0,0,0);
-	box-shadow: inner 0px 0px 10px rgb(0,0,0);
-}
-
-#menuFrame label
-{
-	position:absolute;
-	height:15px;
-	margin:9px 10px;
-	top:0px;
-}
-
-#menuFrame a
-{
-	color:rgb(215,215,255);
-}
-
-div.canvasFrame #instructions
-{
+.instructions{
 	position:absolute;
 	bottom:0px;
 	left:0px;
 	right:0px;
-	z-index:0;
+	
+	z-index:1;
+	
 	color:rgb(160,160,160);
+	
 	font-family:"Lucida Grande", "Lucida Sans Unicode", Helvetica, Arial, Verdana, sans-serif;
 	font-size:28px;
 	text-align:center;
+	
 	padding:20px;
-	transition: color 2500ms;
-	-moz-transition: color 2500ms; /* Firefox 4 */
-	-webkit-transition: color 2500ms; /* Safari and Chrome */
-	-o-transition: color 2500ms; /* Opera */
+	
+	transition:         color 2000ms;
+	-moz-transition:    color 2000ms;
+	-webkit-transition: color 2000ms;
+	-o-transition:      color 2000ms;
+	
+	cursor:default;
 }
 
-div.canvasFrame #experimentLabel
-{
-	position:absolute;
+.settings{
+	position:fixed;
+	bottom:0px;
 	left:0px;
+	right:0px;
+	
+	height:63px;
+	line-height:63px;
+	
+	padding:0px 20px;
+	
+	background:rgb(203,78,78);
+	border-top:1px solid rgb(153,28,28);
+	color:rgb(255,255,255);
+	
+	cursor:default;
+}
+.settings *{
+	vertical-align:middle;
+}
+.settings .slider{
+	display:inline-block;
+	
+	height:20px;
+	width:200px;
+	
+	margin:0px 20px 0px 10px;
+	
+	background:rgba(255,255,255,0.25);
+	
+	-webkit-border-radius: 2px;
+	-moz-border-radius:    2px;
+	border-radius:         2px;
+	
+	overflow:hidden;
+	
+	cursor: ew-resize;
+}
+.settings .slider bar{
+	display:block;
+	
+	background:rgb(255,255,255);
+	
+	height:100%;
+	width:0%;
+}
+.settings right{
+	float:right;
+	
+	color:rgba(255,255,255,0.5);
+}
+.settings a{
+	color:rgb(255,255,255);
+	text-decoration:none;
+}
+.settings a:hover{
+	text-decoration:underline;
+}
+
+.award{
+	position:fixed;
 	top:0px;
-	z-index:0;
-	margin:20px;
-	width:124px;
-	height:61px;
-	background:url('./images/chromeExperiment.png') no-repeat;
-	background-position:0px 50%;
+	left:0px;
+	
+	padding:20px;
+	
+	font-size:12px;
+	color:rgb(51,51,51);
+	
+	opacity:0.5;
+}
+.award:hover{
+	opacity:1;
+}
+.award span{
+	display:block;
+	
+	font-size:20px;
 }
 
 </style>
-<meta charset="UTF-8" NAME="Author" CONTENT="Hunter Larco" />
-<title>3D Canvas</title>
+
+<title>Wireframe Ripple Engine</title>
+
+<meta content="yes" name="apple-mobile-web-app-capable" />
+<meta content="minimum-scale=1.0, width=device-width, maximum-scale=1, user-scalable=no" name="viewport"/>
+
+<script src='./resources/scripts/Math.js'></script>
+<script src='./resources/scripts/requestAnimationFrame.js'></script>
+
 </head>
 <body>
 
 
-
-<div class="canvasFrame" id="container">
-	<canvas id="3D-CANVAS" width="512" height="200"></canvas>
-	<div id="instructions">Try clicking the surface, using the mouse to rotate the plane, or scroll to zoom!</div>
-	<div id="experimentLabel"></div>
-</div>
-<div id="menuFrame">
-	<label>Drop Force:</label>
-	<div id="sliderBarFrame" min="0" max="100" style="margin-left:100px;">
-		<div id="sliderBar"></div>
-		<div id="sliderButton"></div>
-	</div>
-	<label style="right:0px;">Developed by: <a href="http://www.expectsimplicity.appspot.com">Hunter Larco</a></label>
+<div class='canvas'>
+	<canvas></canvas>
+	<div class='instructions'>Try clicking the surface, using the mouse to rotate the plane, or scroll to zoom!</div>
 </div>
 
+<div class='settings'>
+	Drop Force
+	<div class='slider' value='150' min='100' max='300'><bar></bar></div>
+	<right>Developed by <a href='//larcolabs.com'>Hunter Larco</a></right>
+</div>
+
+<a href='//chromeexperiments.com/experiment/wireframe-ripple-simulation'><div class='award'>This is a<span>Chrome<br/>Experiment</span></div></a>
 
 
 <script type="text/javascript">
 
-document.getElementById("3D-CANVAS").addEventListener('click', function (e) { document.getElementById("instructions").style.color = "rgba(0,0,0,0)"; }, true);
-var slideMouse = {down:false, result:50} // result = starting Position
-document.getElementById("sliderButton").addEventListener('mousedown', function (e) { slideMouse.down = true }, true);
-document.getElementById("menuFrame").addEventListener('mouseup', function (e) {
-	slideMouse.down = false;
-	var min = parseFloat(document.getElementById("sliderBarFrame").getAttribute("min"));
-	var max = parseFloat(document.getElementById("sliderBarFrame").getAttribute("max"));
-	slideMouse.result = (document.getElementById("sliderBar").offsetWidth - 5) / (document.getElementById("sliderBarFrame").offsetWidth - 10) * (max - min) + min;
-}, true);
-document.getElementById("sliderBarFrame").addEventListener('mousemove', function (e) {
-	ev = e || window.e;
-	mouseX = ev.pageX - document.getElementById("sliderBarFrame").offsetLeft;
-	if (slideMouse.down == true && mouseX <= document.getElementById("sliderBarFrame").offsetWidth - 5 && mouseX >= 5)
-	{
-		document.getElementById("sliderBar").style.width = mouseX + "px"
-		mouseX -= 10
-		document.getElementById("sliderButton").style.left = mouseX + "px"
-	}
-}, true);
-// Experiment Label Hover Listeners:
-document.addEventListener('mousemove', function (e) {
-	mouseX = e.pageX;
-	mouseY = e.pageY;
-	if (mouseX >= 0 && mouseX <= document.getElementById("experimentLabel").offsetWidth + 40 && mouseY >= 0 && mouseY <= document.getElementById("experimentLabel").offsetHeight + 40)
-	{
-		document.getElementById("experimentLabel").style.backgroundPosition = "-124px 50%"
-		document.getElementById("3D-CANVAS").style.cursor = "pointer"
-	} else {
-		document.getElementById("experimentLabel").style.backgroundPosition = "0px 50%"
-		document.getElementById("3D-CANVAS").style.cursor = "default"
-	}
-}, true);
-document.addEventListener('mousedown', function (e) {
-	mouseX = e.pageX;
-	mouseY = e.pageY;
-	if (mouseX >= 0 && mouseX <= document.getElementById("experimentLabel").offsetWidth + 40 && mouseY >= 0 && mouseY <= document.getElementById("experimentLabel").offsetHeight + 40)
-	{
-		window.location = "http://www.chromeexperiments.com/";
-	}
-}, true);
-
-</script>
-<script type="text/javascript">
-
-var canvas = document.getElementById("3D-CANVAS");
-var ctx = canvas.getContext("2d");
-var width;
-var height;
-
-var center;
-var point_array = [];
-var view_angle = [20,45,0] // x-rotation, y-rotation, z-rotation (not working)
-
-var floor = Math.floor;
-var cos = Math.cos;
-var sin = Math.sin;
-var tan = Math.tan;
-var atan = Math.atan;
-var acos = Math.acos;
-var asin = Math.asin;
-var random = Math.random;
-var degToRad = Math.PI / 180;
-var sqrt = Math.sqrt;
-var pow = Math.pow;
-var abs = Math.abs;
-var PI = Math.PI;
-
-var plane = {l:100, w:100, pointDistance:5} // length , width , distance between points
-
-function generatePlane(width, length, height, squareDimension)
-{	
-	var center = [width * squareDimension / 2, length * squareDimension / 2, height * squareDimension / 2]
-	for (_x=0; _x<width; _x++)
-	{
-		for (_z=0; _z<length; _z++)
-		{
-			var x = squareDimension * _x - center[0];
-			var z = squareDimension * _z - center[1];
-			var y = -center[2]
-			point_array[_x+_z*width] = [x, y, z];
-		}
-	}
-}
-
-window.onload = function ()
-{
-	canvas.width = document.getElementById("container").clientWidth
-    canvas.height = document.getElementById("container").clientHeight
-	width = canvas.width;
-	height = canvas.height;
-	center = [width / 2, height / 2];
-	mouse.scrollDelta = (width-100)/(plane.pointDistance*sqrt(pow(plane.w, 2)+pow(plane.l, 2)));
-	generatePlane(plane.w,plane.l,0,plane.pointDistance)
-	setup_function()
-}
-
-window.onresize = function ()
-{
-    canvas.width = document.getElementById("container").clientWidth
-    canvas.height = document.getElementById("container").clientHeight
-	mouse.scrollDelta *= canvas.width / width
-	width = canvas.width;
-	height = canvas.height;
-	center = [width / 2, height / 2];
-}
-
-
-function setup_function()
-{
-	window.setInterval(game_cycle, 30)
-}
-
-
-function game_cycle()
-{
-	ctx.clearRect(0, 0, width, height)
-/*	ctx.lineWidth = 1
-	ctx.strokeStyle = "rgb(0,0,0)"
-	ctx.beginPath()
-	ctx.moveTo(center[0], center[1])
-	ctx.lineTo(center[0] + 100, center[1])
-	ctx.moveTo(center[0], center[1])
-	ctx.lineTo(center[0], center[1] - 100)
-	ctx.stroke()
-	ctx.closePath()*/
+(function(){
 	
-	
-	var rendering_points = new Array()	
-	
-	for (j=0; j<point_array.length; j++)
-	{
-			x = point_array[j][0] * mouse.scrollDelta
-			y = point_array[j][1] * mouse.scrollDelta
-			z = point_array[j][2] * mouse.scrollDelta
-	
-			if (x != 0 || z != 0)
-			{
-				if (z != 0) {a = Math.atan(x/z)} else {a = Math.PI / 2 * (Math.abs(x) / x)}
-				a += Math.PI * 2 // so that a + Math.PI*view_angle[1]/180 != 0
-				if (z == 0) {depth = 1} else {depth = Math.abs(z) / z}
-				x = Math.sin(a + Math.PI*view_angle[1]/180) * Math.sqrt(Math.pow(x,2) + Math.pow(z,2)) * depth
-				nz = x / Math.tan(a + Math.PI*view_angle[1]/180)
-			} else {
-				nz = z
-			}
-			
+	var canvas, ctx, width, height;
+	var slider = {};
 
-			if (y != 0 || nz != 0)
-			{
-				if (nz != 0){a = Math.atan(y/nz)} else {a = Math.PI / 2 * (Math.abs(y) / y)}
-				a += Math.PI * 2 // so that a + Math.PI*view_angle[0]/180 != 0
-				if (nz == 0) {depth = 1} else {depth = Math.abs(nz) / nz}
-				y = Math.sin(a + Math.PI*view_angle[0]/180) * Math.sqrt(Math.pow(y,2) + Math.pow(nz,2)) * depth
-			}
+	window.addEventListener('load', Init);
 
-			rendering_points[j] = {
-				x: x + center[0],
-				y: height - (y + center[1])
-			}
-	}
-	
-	
-
-	ctx.beginPath()
-	
-	for (x=0; x<rendering_points.length / plane.l; x++) // 100 is width
-	{
-		ctx.moveTo(rendering_points[x].x, rendering_points[x].y)
-		for (y=1; y<rendering_points.length / plane.w; y++) // 100 is height
-		{
-		    ctx.lineTo(rendering_points[x+y*plane.w].x, rendering_points[x+y*plane.w].y)
+	function Init(){
+		LoadCanvas();
+		LoadInstructions();
+		LoadSlider();
 		
+		GeneratePlane(500, 500, 20);
+		Render();
+		
+		BindMouseListener();
+	}
+
+	function LoadCanvas(){
+		canvas = document.querySelector('canvas');
+		ctx = canvas.getContext('2d');
+	
+		OnResize();
+		window.addEventListener('resize', OnResize);
+	}
+	function OnResize(){
+		width = canvas.width = canvas.offsetWidth;
+		height = canvas.height = canvas.offsetHeight;
+	}
+	
+	function LoadInstructions(){
+		var removed = false;
+		
+		canvas.addEventListener('click', function(){
+			if(removed) return;
+			removed = true;
+			
+			var elem = document.querySelector('.instructions');
+			
+			elem.style.color = 'transparent';
+			
+			setTimeout(function(){
+				elem.parentElement.removeChild(elem);
+			}, 2100);
+		});
+	}
+	
+	function LoadSlider(){
+		slider.elem = document.querySelector('.slider');
+		
+		slider.max = parseInt(slider.elem.getAttribute('max'));
+		slider.min = parseInt(slider.elem.getAttribute('min'));
+		slider.value = parseInt(slider.elem.getAttribute('value'));
+		
+		slider.elem.addEventListener('mousedown', SliderActivate);
+		
+		UpdateSliderBar();
+	}
+	function UpdateSliderBar(){
+		var percent = (slider.value - slider.min) / (slider.max - slider.min);
+		document.querySelector('.slider bar').style.width = 100*percent + '%';
+	}
+	function SliderActivate(event){
+		UpdateSliderValue(event);
+		window.addEventListener('mousemove', UpdateSliderValue);
+		window.addEventListener('mouseup', SliderDeactivate);
+	}
+	function SliderDeactivate(event){
+		UpdateSliderValue(event);
+		window.removeEventListener('mousemove', UpdateSliderValue);
+		window.removeEventListener('mouseup', SliderDeactivate);
+	}
+	function UpdateSliderValue(event){
+		var x = event.x,
+				sx = slider.elem.offsetLeft,
+				ex = sx + slider.elem.offsetWidth,
+				fixed_x = Math.min(Math.max(x, sx), ex) - sx,
+				x_percent = fixed_x / (ex - sx);
+		slider.value = slider.min + x_percent*(slider.max - slider.min);
+		UpdateSliderBar();
+	}
+	
+	var plane = {points:[], step:0};
+	var pitch = Math.PI/4, roll = Math.PI/12;
+	
+	function Render(){
+		requestAnimationFrame(Render);
+		
+		RenderPlane();
+		UpdateDrops();
+	}
+	
+	var drops = [];
+	
+	function AddDrop(event){
+		var x = event.x,
+				y = event.y;
+				
+		var points = plane.points;
+		
+		for(var y=0; y<points.length; y++){
+			for(var x=0; x<points[y].length; x++){
+				var point3d = points[y][x],
+						point = Flatten(Rotate(CheckDrop(point3d)));
+				if(Math.sqrt(Math.pow(event.x-(point.x+width/2), 2)+Math.pow(event.y-(point.y+height/2), 2)) < plane.step){
+					drops.push({
+						x: point3d.x,
+						y: point3d.y,
+						z: point3d.z,
+						time: 0,
+						force: slider.value
+					});
+					return;
+				}
+			}
+		}
+	}
+	function CheckDrop(point){
+		var total_change = 0;
+		
+		for(var i=0,drop; drop=drops[i++];){
+			var x = (point.x - drop.x) / 10;
+			var z = (point.z - drop.z) / 10;
+			total_change += Math.cos(0.5*Math.sqrt(x*x+z*z)-6*(drop.time))/(0.5*(x*x+z*z)+1+2*(drop.time))*-drop.force;
+		}
+		
+		return {
+			x: point.x,
+			y: point.y + total_change,
+			z: point.z
+		};
+	}
+	function UpdateDrops(){
+		for(var i=0,drop; drop=drops[i++];) drop.time += 0.1;
+	}
+	
+	function GeneratePlane(width, height, step){
+		plane.step = step;
+		plane.width = width;
+		plane.height = height;
+		
+		for(var x=-width/2; x<=width/2; x+=step){
+			var row = [];
+			for(var z=-width/2; z<=width/2; z+=step)
+				row.push({
+					x: x,
+					z: z,
+					y: 0
+				});
+			plane.points.push(row);
+		}
+	}
+	function RenderPlane(){
+		ctx.clearRect(0, 0, width, height);
+		
+		ctx.strokeStyle = 'rgb(51,51,51)';
+		
+		ctx.save();
+		ctx.translate(width/2, height/2);
+		ctx.beginPath();
+		
+		var step = plane.step,
+				points = plane.points;
+		
+		for(var y=0; y<points.length-1; y++){
+			for(var x=0; x<points[y].length-1; x++){
+				var square = [
+					Flatten(Rotate(CheckDrop(points[y  ][x  ]))),
+					Flatten(Rotate(CheckDrop(points[y  ][x+1]))),
+					Flatten(Rotate(CheckDrop(points[y+1][x+1]))),
+					Flatten(Rotate(CheckDrop(points[y+1][x  ])))
+				];
+				
+				ctx.moveTo(square[0].x, square[0].y);
+				ctx.lineTo(square[1].x, square[1].y);
+				ctx.lineTo(square[2].x, square[2].y);
+				ctx.lineTo(square[3].x, square[3].y);
+				ctx.lineTo(square[0].x, square[0].y);
+			}
+		}
+		
+		ctx.stroke();
+		ctx.restore();
+	}
+	function Flatten(point3d){
+		return {
+			x: point3d.x,
+			y: point3d.y
+		};
+	}
+	
+	function GenRotMatrix(){
+		var rot_x = math.matrix([
+					[1, 0             , 0              ],
+					[0, Math.cos(roll), -Math.sin(roll)],
+					[0, Math.sin(roll),  Math.cos(roll)]
+				]),
+				rot_y = math.matrix([
+					[ Math.cos(pitch), 0, Math.sin(pitch)],
+					[0               , 1, 0              ],
+					[-Math.sin(pitch), 0, Math.cos(pitch)]
+				]);
+		return math.multiply(rot_x, rot_y);
+	}
+	function Rotate(point){
+		var column_vector = math.matrix([[point.x],[point.y],[point.z]]),
+				rotated = math.multiply(GenRotMatrix(), column_vector);
+		
+		return {
+			x: math.subset(rotated, math.index(0, 0)),
+			y: math.subset(rotated, math.index(1, 0)),
+			z: math.subset(rotated, math.index(2, 0))
 		}
 	}
 	
+	var mouse = {};
 	
-	for (y=0; y<rendering_points.length / plane.w; y++) // 100 is height
-	{
-	    ctx.moveTo(rendering_points[y*plane.w].x, rendering_points[y*plane.w].y)
-		for (x=1; x<rendering_points.length / plane.l; x++) // 100 is width
-		{
-		    ctx.lineTo(rendering_points[x+y*plane.w].x, rendering_points[x+y*plane.w].y)
-		}
+	function BindMouseListener(){
+		canvas.addEventListener('mousedown', ActivateRotationListener);
+		canvas.addEventListener('click', AddDrop);
+	}
+	function ActivateRotationListener(event){
+		mouse.last = {x:event.x, y:event.y};
+		window.addEventListener('mousemove', UpdateRotation);
+		window.addEventListener('mouseup', DeactivateRotationListener);
+	}
+	function DeactivateRotationListener(){
+		window.removeEventListener('mousemove', UpdateRotation);
+		window.removeEventListener('mouseup', DeactivateRotationListener);
+	}
+	function UpdateRotation(event){
+		var dx = event.x - mouse.last.x,
+				dy = event.y - mouse.last.y;
+		mouse.last = {x:event.x, y:event.y};
+		
+		// assume that a full screen width or height is a rotation of 2*PI rad
+	
+		pitch += -dx/window.innerWidth * Math.PI*2;
+		roll += dy/window.innerHeight * Math.PI*2;
 	}
 	
-	ctx.stroke()
-	
-	
-	if (mouse.down == true && mouse.wait == false)
-	{
-		mouse.wait = true;
-		createRipple(rendering_points)
-	}
-	
-	
-	
-	
-	
-	
-	view_angle[0] += key_ports[0] + mouse.yVelocity;
-	view_angle[1] += key_ports[1] + mouse.xVelocity;
-	view_angle[2] += key_ports[2];
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	var outputNum;
-	for (i=0; i<point_array.length; i++)
-	{
-		outputNum = 0;
-		for (j=0; j<ripples.length; j++)
-		{
-			var x = (point_array[i][0] - ripples[j].x) / 10;// 10 reduces scale so changes aren't huge
-			var z = (point_array[i][2] - ripples[j].z) / 10;// 10 reduces scale so changes aren't huge
-			var destPoint = cos(0.5*sqrt(x*x+z*z)-6*(ripples[j].time))/(0.5*(x*x+z*z)+1+2*(ripples[j].time))*-ripples[j].force; // awesome: pow(abs(cos(x/10*x/10+z/10*z/10)), (1/8))*100
-			outputNum += destPoint
-		}
-		point_array[i][1] = outputNum;
-	}
-	
-	for (i=0; i<ripples.length; i++)
-	{
-		ripples[i].time += 0.075
-	}
-	
-	
-	
-	
-	
-	// if (floor(random()*50) == 0)
-	// {
-	// 	ripples.push({x:floor(random()*plane.w*plane.pointDistance)-plane.w*plane.pointDistance/2, y:0, z:floor(random()*plane.l*plane.pointDistance)-plane.l*plane.pointDistance/2, time:0, force:floor(random()*50)});
-	// } // rain
-}
-
-
-
-
-
-function createRipple(rendering_points)
-{
-	for (i=0; i<rendering_points.length; i++)
-	{
-		var dist = sqrt(pow(abs(rendering_points[i].x - mouse.x), 2) + pow(abs(rendering_points[i].y - mouse.y), 2))
-		if (dist < plane.pointDistance)
-		{
-			ripples.push({x:point_array[i][0], y:point_array[i][1], z:point_array[i][2], time:0, force:slideMouse.result});
-			return false;
-		}
-	}
-}
-
-
-
-
-
-
-window.addEventListener("keydown", key_pressed, false);
-window.addEventListener("keyup", key_released, false);
-
-var key_ports = [0,0,0]
-
-function key_pressed(event)
-{
-	var unicode=event.keyCode? event.keyCode : event.charCode
-	switch (unicode)
-	{
-		case 37:
-			key_ports[1] = 1
-		break;
-		case 38:
-			key_ports[0] = 1
-		break;
-		case 39:
-			key_ports[1] = -1
-		break;
-		case 40:
-			key_ports[0] = -1
-		break;
-	}
-}
-
-function key_released(event)
-{
-	var unicode=event.keyCode? event.keyCode : event.charCode
-	switch (unicode)
-	{
-		case 37:
-			key_ports[1] = 0
-		break;
-		case 38:
-			key_ports[0] = 0
-		break;
-		case 39:
-			key_ports[1] = 0
-		break;
-		case 40:
-			key_ports[0] = 0
-		break;
-	}
-}
-
-
-
-
-
-
-
-
-var ripples = new Array()
-var mouse = {scrollDelta: 1, y:0, x:0, down:false, wait:false, velocity:{x:0, y:0}, xVelocity:0, yVelocity:0}
-
-canvas.addEventListener('DOMMouseScroll', function (e) { mouseWheel( e ); }, true);
-canvas.addEventListener('mousewheel', function (e) { mouseWheel( e ); }, true);
-canvas.addEventListener('mousemove', function (e) {
-	ev = e || window.e;
-	var oldMouse = {x:mouse.x, y:mouse.y};
-	mouse.x = ev.pageX-canvas.offsetLeft;
-	mouse.y = ev.pageY-canvas.offsetTop;
-	if (oldMouse.x - mouse.x != 0 && mouse.down == true)
-	{
-		view_angle[1] += (oldMouse.x - mouse.x) / 4 * abs(view_angle[0] - 360 * floor(view_angle[0] / 360) - 180) / -(view_angle[0] - 360 * floor(view_angle[0] / 360) - 180)
-		mouse.xVelocity = 0;
-	}
-	if (oldMouse.y - mouse.y != 0 && mouse.down == true)
-	{
-		view_angle[0] += (oldMouse.y - mouse.y) / -4
-		mouse.yVelocity = 0;
-	}
-	mouse.velocity.x = mouse.x - oldMouse.x;
-	mouse.velocity.y = mouse.y - oldMouse.y;
-}, true);
-canvas.addEventListener('mousedown', function (e) {
-	mouse.down=true;
-	mouse.xVelocity = 0;
-	mouse.yVelocity = 0;
-}, true);
-canvas.addEventListener('mouseup', function (e) {
-	mouse.down=false;
-	mouse.wait=false;
-	if (abs(mouse.velocity.x) >= 15)
-	{
-		mouse.xVelocity = mouse.velocity.x / -10
-	} else {
-		mouse.xVelocity = 0;
-	}
-	if (abs(mouse.velocity.y) >= 15)
-	{
-		mouse.yVelocity = mouse.velocity.y / 10
-	} else {
-		mouse.yVelocity = 0;
-	}
-}, true);
-canvas.addEventListener('contextmenu', function(e) {
-	mouse.scrollDelta=(width-100)/(plane.pointDistance*sqrt(pow(plane.w, 2)+pow(plane.l, 2)));
-	e.preventDefault();
-}, false);
-
-mouseWheel = function( event )
-{
-	var delta = 0;
-	if (event.wheelDelta)
-	{ /* IE/Opera. */
-		delta = -(event.wheelDelta/120);
-	} else if (event.detail) { /* Mozilla */
-			delta = event.detail/3;
-	}
-	if (delta)  {
-		if (mouse.scrollDelta > 0 || delta > 0)
-		{
-			mouse.scrollDelta += delta/50;
-		}
-	}
-	if (event.preventDefault)
-	{
-		event.preventDefault();
-	}
-	event.returnValue = false;
-};
-
+})();
 
 </script>
 </body>
