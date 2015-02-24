@@ -7,3 +7,7 @@ Contributers&ensp;·&ensp;[Hunter Larco](http://larcolabs.com)
 ## Notable Mentions
 
 Chrome Experiments accepted the [original version](https://www.chromeexperiments.com/experiment/wireframe-ripple-simulation) on Sept. 13, 2012.
+
+## TODO
+
+* The 2015 reboot is terribly inefficient but much cleaner code. The lack of objects in the original version sped it up. Try to find a happy compromise.
